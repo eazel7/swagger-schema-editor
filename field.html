@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group" ng-class="{'has-error': ctrl.hasError()}">
   <div class="pull-right btn-group">
     <a class="btn btn-xs btn-default"
        ng-click="target[propertyName] = (target[propertyName] === null ? ctrl.defaultValue() : null)"
@@ -8,7 +8,7 @@
        ng-class="{'active btn-primary': ctrl.isUndefined()}">undefined</a>
   </div>
   <label class="control-label">{{property.summary || propertyName}}</label>
-  <input ng-if="property.type === 'string'"
+  <input ng-if="property.type === 'string' && !property.enum"
          ng-disabled="target[propertyName] === null || target[propertyName] === undefined"
          class="form-control"
          type="text"
@@ -18,4 +18,13 @@
          class="form-control"
          type="number"
          ng-model="target[propertyName]" />
+  <select ng-if="property.type === 'string' && property.enum"
+          ng-disabled="target[propertyName] === null || target[propertyName] === undefined"
+          class="form-control"
+          ng-model="target[propertyName]">
+    <option ng-repeat="o in property.enum" value="{{o}}">{{o}}</option>
+  </select>
+  <span ng-if="ctrl.hasError()"
+        class="help-block">Invalid value: <pre style="display: inline; padding: 0.3em">{{target[propertyName]|json}}</pre>
+  </span>
 </div>

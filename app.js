@@ -31,6 +31,15 @@ angular.module('APP', [])
 
         return ($scope.target[$scope.propertyName] === undefined);
       };
+			this.hasError = function () {
+				if ($scope.property &&
+						$scope.propertyName &&
+					  $scope.property.enum &&
+						$scope.target &&
+					  ($scope.target[$scope.propertyName] !== null && $scope.target[$scope.propertyName] !== undefined)) {
+					return $scope.property.enum.indexOf($scope.target[$scope.propertyName]) === -1;
+				}
+			};
       this.defaultValue = function () {
         if (!$scope.property.type) return;
 
@@ -103,9 +112,18 @@ angular.module('APP', [])
     'SubForm': {
       'type': 'object',
       'properties': {
-        'text2': {
+        'option1': {
           'type': 'string',
-          'summary': 'Text 2'
+          'summary': 'Options 1',
+					'enum': [
+						'green',
+						'red',
+						'blue'
+					]
+        },
+        'number2': {
+          'type': 'number',
+          'summary': 'Number 2'
         }
       }
     }
@@ -114,7 +132,8 @@ angular.module('APP', [])
     'text1': 'sample',
     'number1': 4,
     'object1': {
-      'text2': 'succeded!'
+      'option1': 'orange',
+      'number2': 420
     }
   };
 });
