@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app='APP'>
+	<head>
+<meta name="description" content="Angular Nested recursive directives" />
+<script src="js/angular.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/bootstrap-theme.css" rel="stylesheet" />
+<script src="app.js"></script>
+	</head>
+	<body>
+		<div ng-controller="IndexCtrl"
+         class="container-fluid">
+			<schema target="target"
+              schema="schemas.MainForm"
+              schemas="schemas">
+      </schema>
+      <br />
+      <pre>{{target|json}}</pre>
+		</div>
+	</body>
+</html>

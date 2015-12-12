@@ -1,0 +1,21 @@
+<div class="form-group">
+  <div class="pull-right btn-group">
+    <a class="btn btn-xs btn-default"
+       ng-click="target[propertyName] = (target[propertyName] === null ? ctrl.defaultValue() : null)"
+       ng-class="{'active btn-primary': target[propertyName] === null}">null</a>
+    <a class="btn btn-xs btn-default"
+       ng-click="target[propertyName] = (target[propertyName] === undefined ? ctrl.defaultValue() : undefined)"
+       ng-class="{'active btn-primary': ctrl.isUndefined()}">undefined</a>
+  </div>
+  <label class="control-label">{{property.summary || propertyName}}</label>
+  <input ng-if="property.type === 'string'"
+         ng-disabled="target[propertyName] === null || target[propertyName] === undefined"
+         class="form-control"
+         type="text"
+         ng-model="target[propertyName]" />
+  <input ng-if="property.type === 'number'"
+         ng-disabled="target[propertyName] === null || target[propertyName] === undefined"
+         class="form-control"
+         type="number"
+         ng-model="target[propertyName]" />
+</div>

@@ -1,0 +1,15 @@
+{
+  "name": "ng-recursive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^0.9.0"
+  }
+}
